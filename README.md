@@ -1,3 +1,9 @@
+"@testing-library/jest-dom": "^5.16.2",
+"@testing-library/react": "^12.1.4",
+"@testing-library/user-event": "^13.5.0",
+yarn test library be delete in project
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
