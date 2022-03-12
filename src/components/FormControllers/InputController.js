@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller } from "react-hook-form";
-import SingleInput from "../SignleFormElements/SingleInput";
-import withFormItem from "../withFormItem";
+import SingleInput from "components/SignleFormElements/SingleInput";
+import withFormItem from "components/withFormItem";
 
 const InputController = ({ name, rules, control, ...rest }) => {
   return (

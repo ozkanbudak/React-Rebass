@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import UnauthenticatedRoute from "./Guards/UnauthenticatedRoute";
-import Profile from "../views/profile";
+import Profile from "views/profile";
 
 const ProfileRoute = ({ appProps }) => {
   return (

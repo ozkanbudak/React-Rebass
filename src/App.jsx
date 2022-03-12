@@ -7,8 +7,8 @@ import { Typography } from "antd";
 import { useState } from "react";
 import "./ant.less";
 import "antd/dist/antd.variable.min.css";
-import AppRouter from "./route/index";
-import InputController from "./components/FormControllers/InputController"
+import AppRouter from "route/index";
+import InputController from "components/FormControllers/InputController"
 import { useForm } from "react-hook-form";
 
 const theme = {

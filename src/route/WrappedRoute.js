@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import UnauthenticatedRoute from "./Guards/UnauthenticatedRoute";
 import Profile from "./Profile"
-import Home from "../views/home"
+import Home from "views/home"
 
 const WrappedRoutes = ({ appProps }) => {
   return (
