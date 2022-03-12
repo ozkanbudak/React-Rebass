@@ -29,8 +29,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {state}
-      <AppRouter>
-        <Button
+      <Button
           onClick={() => {
             ConfigProvider.config({
               theme: {
@@ -47,6 +46,8 @@ function App() {
         <Text fontSize={0} color="huseyin">
           Text
         </Text>
+      <AppRouter>
+        
       </AppRouter>
     </ThemeProvider>
   );
