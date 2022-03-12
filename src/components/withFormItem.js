@@ -4,14 +4,13 @@ import { Text } from "rebass";
 
 const withFormItem =
   (WrappedComponent) =>
-  ({ errors, name, ...rest }) => {
-      console.log("name", name)
+  ({ errors, ...rest }) => {
     return (
       <>
-        <WrappedComponent name={name} {...rest} />
+        <WrappedComponent {...rest} />
         <ErrorMessage
           errors={errors}
-          name={name}
+          name={rest.name}
           render={({ message }) => <Text color="primary">{message}</Text>}
         />
       </>

@@ -9,7 +9,7 @@ const InputController = ({ name, rules, control, ...rest }) => {
       control={control}
       name={name}
       rules={rules}
-      render={({ field: { onChange, onBlur, value, ref } }) => (
+      render={({ field: { onChange, onBlur, value } }) => (
         <SingleInput
           onChange={onChange}
           onBlur={onBlur}
