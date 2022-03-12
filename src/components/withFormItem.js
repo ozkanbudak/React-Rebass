@@ -12,7 +12,7 @@ const withFormItem =
         <ErrorMessage
           errors={errors}
           name={name}
-          render={({ message }) => <p>{message}</p>}
+          render={({ message }) => <Text color="primary">{message}</Text>}
         />
       </>
     );
