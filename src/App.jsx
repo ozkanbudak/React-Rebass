@@ -7,6 +7,7 @@ import { Typography } from "antd";
 import { useState } from "react";
 import "antd/dist/antd.variable.min.css";
 import "./ant.less";
+import AppRouter from "./route/index";
 
 const theme = {
   colors: {
@@ -28,23 +29,25 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       {state}
-      <Button
-        onClick={() => {
-          ConfigProvider.config({
-            theme: {
-              primaryColor: Math.random() > 0.5 ? theme.colors.primary : "blue",
-            },
-          });
-          setState(state + 1);
-        }}
-        type="primary"
-      >
-        Primary Button
-      </Button>
-      <Input placeholder="large size" />
-      <Text fontSize={0} color="huseyin">
-        Text
-      </Text>
+      <AppRouter>
+        <Button
+          onClick={() => {
+            ConfigProvider.config({
+              theme: {
+                primaryColor: Math.random() > 0.5 ? theme.colors.primary : "blue",
+              },
+            });
+            setState(state + 1);
+          }}
+          type="primary"
+        >
+          Primary Button
+        </Button>
+        <Input placeholder="large size" />
+        <Text fontSize={0} color="huseyin">
+          Text
+        </Text>
+      </AppRouter>
     </ThemeProvider>
   );
 }
