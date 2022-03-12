@@ -5,9 +5,11 @@ import { Text } from "rebass";
 import { ConfigProvider, Button, Input } from "antd";
 import { Typography } from "antd";
 import { useState } from "react";
-import "antd/dist/antd.variable.min.css";
 import "./ant.less";
+import "antd/dist/antd.variable.min.css";
 import AppRouter from "./route/index";
+import InputController from "./components/FormControllers/InputController"
+import { useForm } from "react-hook-form";
 
 const theme = {
   colors: {
@@ -20,15 +22,23 @@ const theme = {
 ConfigProvider.config({
   theme: {
     primaryColor: theme.colors.primary,
+    testColor: theme.colors.huseyin
   },
 });
 
 function App() {
   const [state, setState] = useState(1);
+  const { control, formState: { errors }, handleSubmit} = useForm();
+  const onSubmit = (data) => console.log(data);
 
   return (
     <ThemeProvider theme={theme}>
       {state}
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+      <InputController name="test" control={control} rules={{required: "Zorunlu"}} errors={errors} />
+      <input type="submit" />
+      </form>
       <Button
           onClick={() => {
             ConfigProvider.config({
