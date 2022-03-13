@@ -35,5 +35,8 @@ export default {
       color: "white",
       bg: "primary",
     },
+    size: {
+      lg: "40px"
+    }
   },
 };

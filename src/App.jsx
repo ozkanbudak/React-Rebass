@@ -8,7 +8,7 @@ import { useState } from "react";
 import "./ant.less";
 import "antd/dist/antd.variable.min.css";
 import AppRouter from "route/index";
-import InputController from "components/FormControllers/InputController"
+import InputController from "components/FormControllers/InputController";
 import { useForm } from "react-hook-form";
 
 const theme = {
@@ -22,43 +22,49 @@ const theme = {
 ConfigProvider.config({
   theme: {
     primaryColor: theme.colors.primary,
-    testColor: theme.colors.huseyin
+    testColor: theme.colors.huseyin,
   },
 });
 
 function App() {
   const [state, setState] = useState(1);
-  const { control, formState: { errors }, handleSubmit} = useForm();
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const onSubmit = (data) => console.log(data);
 
   return (
     <ThemeProvider theme={theme}>
       {state}
       <form onSubmit={handleSubmit(onSubmit)}>
-
-      <InputController name="test" control={control} rules={{required: "Zorunlu"}} errors={errors} />
-      <input type="submit" />
+        <InputController
+          name="test"
+          control={control}
+          rules={{ required: "Zorunlu" }}
+          errors={errors}
+        />
+        <input type="submit" />
       </form>
       <Button
-          onClick={() => {
-            ConfigProvider.config({
-              theme: {
-                primaryColor: Math.random() > 0.5 ? theme.colors.primary : "blue",
-              },
-            });
-            setState(state + 1);
-          }}
-          type="primary"
-        >
-          Primary Button
-        </Button>
-        <Input placeholder="large size" />
-        <Text fontSize={0} color="huseyin">
-          Text
-        </Text>
-      <AppRouter>
-        
-      </AppRouter>
+        onClick={() => {
+          ConfigProvider.config({
+            theme: {
+              primaryColor: Math.random() > 0.5 ? theme.colors.primary : "blue",
+            },
+          });
+          setState(state + 1);
+        }}
+        type="test"
+      >
+        Primary Button
+      </Button>
+      <Input placeholder="large size" />
+      <Text fontSize={0} color="huseyin">
+        Text
+      </Text>
+      <AppRouter></AppRouter>
     </ThemeProvider>
   );
 }
