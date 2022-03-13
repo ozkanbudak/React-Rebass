@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 import TestService from "services/TestServices";
 
 const Profile = () => {
-  const testService = new TestService();
-  const loading = false
+  // const testService = new TestService();
+  // const loading = false
 
-  useEffect(() => {
-    loading = true;
-    testService.testService().then((data) => {
-      console.log("data", data)
-      loading = false
-    }).catch((error) => {
-      loading = false;
-      console.log("error", error)
-    });
-  }, []);
+  // useEffect(() => {
+  //   loading = true;
+  //   testService.testService().then((data) => {
+  //     console.log("data", data)
+  //     loading = false
+  //   }).catch((error) => {
+  //     loading = false;
+  //     console.log("error", error)
+  //   });
+  // }, []);
   
 
   return (
