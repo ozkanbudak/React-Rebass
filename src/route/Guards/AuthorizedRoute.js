@@ -1,28 +1,15 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import React, { useContext } from "react";
+import { useLocation, Navigate } from "react-router-dom";
+import { Context as AuthContext } from 'context/AuthContext';
 
-export default function AuthenticatedRoute({
-  component: C,
-  appProps,
-  permissions,
-  ...rest
-}) {
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (appProps.isAuthenticated) {
-          if (!permissions) {
-            console.log("girdi")
-            return <C {...props} />};
-          return <Redirect to="/403" />;
-        }
-        return (
-          <Redirect
-            to={`/sign-in?redirect=${props.location.pathname}${props.location.search}`}
-          />
-        );
-      }}
-    />
-  );
+
+export default function AuthenticatedRoute({ children, perm }) {
+  const { state } = useContext(AuthContext);
+  let location = useLocation();
+  
+  if(state.token) {
+    if(perm && perm === "profilemanagerperm") return children;
+      return <Navigate to="/403" state={{ from: location }} replace />;
+  } else return <Navigate to="/login" state={{ from: location }} replace />;
+
 }

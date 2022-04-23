@@ -1,8 +1,15 @@
-import { Text } from "rebass";
+import React from "react";
+import { Link, Text } from "rebass";
 import { useTheme } from 'emotion-theming'
+import styled from '@emotion/styled'
 
-function Test() {
-  console.log(useTheme())
+export const HeaderButton = styled(Link)`
+  text-decoration: ${props =>
+    props.decoration ? props.decoration : "none"};
+`
+
+const Test = () => {
+  console.log("test",useTheme())
   return (
     <Text fontSize={0} color="primary" fontWeight="bold">
       Text
@@ -10,4 +17,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default React.memo(Test);

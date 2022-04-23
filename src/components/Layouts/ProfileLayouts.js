@@ -3,8 +3,8 @@ import React from "react";
 const ProfileLayout = ({ children }) => {
   return (
     <>
-      <div class="profile-left-menu">Dynamic Profile lEFT mENU</div>
-      <div class="profile-layout">{children}</div>
+      <div className="profile-left-menu">Dynamic Profile lEFT mENU</div>
+      <div className="profile-layout">{children}</div>
     </>
   );
 };
