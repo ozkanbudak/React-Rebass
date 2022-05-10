@@ -50,10 +50,11 @@ export const randomId = () => {
 export const convertFormElements = ({
   els,
   control,
+  defaultValues
 }) => {
-  console.log("34234123423424234")
   Object.keys(els).map((key) => {
     els[key].control = control;
+    els[key].defaultValue = defaultValues[key];
     return '';
   });
   return els;

@@ -1,5 +1,4 @@
 import { ThemeProvider } from "emotion-theming";
-import _ from "lodash";
 import { Box, Flex, Text } from "rebass";
 import { ConfigProvider, Button, Input } from "antd";
 import { useEffect, useMemo, useState } from "react";
@@ -8,16 +7,13 @@ import "./ant.less";
 import AppRouter from "route/index";
 import FInput from "components/UI/Forms/FormControllers/FInput";
 import { useForm } from "react-hook-form";
-import  useTestForm  from "config/formElements/useTestForm";
+import testformelements from "config/formElements/testformelements";
 import { convertFormElements } from "config/utils";
 import styled from "@emotion/styled";
 import FSelect from "components/UI/Forms/FormControllers/FSelect";
 import Test, { HeaderButton } from "Test";
-import SSelect from "components/UI/Forms/SFormElements/SSelect";
 import { Select } from "antd";
-import axios from "axios";
 import FRadio from "components/UI/Forms/FormControllers/FRadio";
-import SRadio from "components/UI/Forms/SFormElements/SRadio";
 
 const theme = {
   colors: {
@@ -36,7 +32,6 @@ ConfigProvider.config({
 });
 
 const { Option } = Select;
-
 
 // function formElements() {
 
@@ -94,28 +89,38 @@ const Deneme = styled(FInput)`
   color: ${(props) => props.color};
 `;
 
+const defaultValues = {
+  test: "238905273498523758294057",
+};
+
 function App() {
   const [state, setState] = useState(1);
-  const { control, watch, handleSubmit } = useForm();
+  const [hh, ww] = useState(true);
+  const [a1, a2] = useState(true);
+  const { control, getValues, watch, trigger, handleSubmit, formState: { isSubmitted } } = useForm();
   const onSubmit = (data) => console.log(data);
-  const defaultValues = {
-    test: "2343",
-  };
-  const els = useTestForm()
-  const tt = useMemo(() => convertFormElements({ els, control }), []);
+  
   const test = watch("test");
+  const formelements = useMemo(() => {
+    const els = testformelements();
+    els.test2.rules.validate.keyfi = (values) =>  (values || []).length === 2 ?  "2 alan seçemezsiniz": undefined
+    els.test2.rules.validate.requiredDependedToTest = (values) =>  (getValues("test") === "123" && (values || []).length < 1) ?  "BU ALAN ZORUNLUDUR": undefined
+    return convertFormElements({ els: testformelements(), control, defaultValues });
+  }, []);
 
-  console.log("tt",tt)
+  useEffect(() => {
+    if(isSubmitted) trigger("test2");
+  }, [test]);
 
   return (
     <ThemeProvider theme={theme}>
       {state}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FInput {...tt.test} />
-        <FSelect {...tt.test2} />
-        <FSelect {...tt.test3} />
-        <FRadio {...tt.test4} />
-        <SSelect name="ozkan" {...tt.test2} />
+        <FInput {...formelements.test} />
+        <FSelect {...formelements.test2} />
+        <FSelect {...formelements.test3} />
+        <FRadio {...formelements.test4} />
+        {/* <SSelect name="ozkan" {...formelements.test2} /> */}
         <Flex justifyContent={["center", "end", "start"]} px={[2, 4, 5]} py={4}>
           <Box width={[10, 20, 1 / 100]}>Flex</Box>
         </Flex>
@@ -129,6 +134,8 @@ function App() {
             },
           });
           setState(state + 1);
+          ww(!hh)
+          a2(!a1)
         }}
         type="test"
       >
@@ -139,8 +146,12 @@ function App() {
         Text
       </Text>
       <Test></Test>
-      <HeaderButton color="huseyin" px={4} py={4} decoration="underline">Header Underline</HeaderButton>
-      <HeaderButton color="huseyin" px={4} py={4}>Header None</HeaderButton>
+      {/* <HeaderButton color="huseyin" px={4} py={4} decoration="underline">
+        Header Underline
+      </HeaderButton>
+      <HeaderButton color="huseyin" px={4} py={4}>
+        Header None
+      </HeaderButton> */}
       <AppRouter />
     </ThemeProvider>
   );

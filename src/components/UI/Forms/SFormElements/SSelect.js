@@ -9,6 +9,7 @@ const SSelect = ({
   options,
   ...rest
 }) => {
+  console.log("options")
   return (
     <Select
       style={{ width: 120 }}

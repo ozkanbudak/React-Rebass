@@ -2,11 +2,13 @@ import React from "react";
 import { enumToArray } from "config/utils";
 import {  testEnum } from "config/enums";
 
-const useTestForm = () => {
+const testformelements = () => {
+  console.log("testformelements")
   const test2Opt = enumToArray(testEnum);
   return {
     test: {
       name: "test",
+      type: "password",
       rules: { required: "Zorunluasdadsasd" },
       title: "İnput",
       labelOpt: {
@@ -17,7 +19,7 @@ const useTestForm = () => {
     test2: {
       name: "test2",
       title: "Select",
-      rules: { required: "Zorunluasdadsasd" },
+      rules: {validate: {}},
       options: test2Opt,
       mode: "multiple",
       optionFilterProp: "test2",
@@ -47,4 +49,4 @@ const useTestForm = () => {
   };
 };
 
-export default  useTestForm
+export default  testformelements

@@ -22,5 +22,5 @@ const signout = (dispatch) => () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signin, signout },
-  { token: null, errorMessage: "" }
+  { token: "null", errorMessage: "" }
 );
